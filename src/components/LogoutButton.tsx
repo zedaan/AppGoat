@@ -3,7 +3,7 @@
 import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState } from "react";
-import { useToast } from "@/hooks/use-sonner";
+import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
 function LogOutButton() {
@@ -17,7 +17,7 @@ function LogOutButton() {
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    const  errorMessage = null;
+    const  errorMessage = "error logging out"; // Simulate an error
 
     if (!errorMessage) {
 
