@@ -8,7 +8,7 @@ import { Label } from './ui/label'
 import { Input } from './ui/input'
 import { useTransition } from 'react'
 import { Button } from './ui/button'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Router } from 'lucide-react'
 import Link from 'next/link'
 
 type Props = {
@@ -19,14 +19,44 @@ function AuthForm({ type }: Props) {
   const isLoginForm = type === 'login'
   const isSignUpForm = type === 'signUp'
 
-  const userRouter = useRouter();
+  const router = useRouter();
   const { toast } = useToast();
 
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (formData: FormData) => {
-    console.log('handleSubmit');
-  };
+    startTransition(async() => {
+      const email = formData.get('email') as string
+      const password = formData.get('password') as string
+
+      let errorMessage;
+      let title;
+      let description;
+      if(isLoginForm) {
+        errorMessage = (await LoginAction({ email, password })).errorMessage;
+        title = 'Sign Up';
+        description = 'You have been sign Up successfully.';
+      } else {
+        errorMessage = (await SignUpAction({ email, password })).errorMessage;
+        title = 'Signed Up';
+        description = 'Check your email for conformation link.';
+      }
+      if (!errorMessage) {
+        toast({
+          title,
+          description,
+          variant: 'success',
+        });
+        router.replace("/")
+      } else {
+        toast({
+          title: 'Error',
+          description: errorMessage,
+          variant: 'destructive',
+        });
+      }
+    }
+  )};
 
   return (
     <form action={handleSubmit}>
