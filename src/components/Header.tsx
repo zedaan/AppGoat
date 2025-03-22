@@ -5,9 +5,10 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { DarkModeToggle } from '@/components/DarkModeToggle'
 import LogoutButton from './LogoutButton'
+import { getUser } from '@/auth/server'
 
-function Header() {
-  const user = null; // Replace with actual user authentication logic
+async function Header() {
+  const user = await getUser();
 
   return (
     <header className='relative flex h-24 w-full items-center justify-between bg-popover px-3 sm:px-8'

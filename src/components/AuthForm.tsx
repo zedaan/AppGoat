@@ -10,6 +10,7 @@ import { useTransition } from 'react'
 import { Button } from './ui/button'
 import { Loader2, Router } from 'lucide-react'
 import Link from 'next/link'
+import { loginAction, signUpAction } from '@/actions/users'
 
 type Props = {
   type: 'login' | 'signUp'
@@ -25,6 +26,9 @@ function AuthForm({ type }: Props) {
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = (formData: FormData) => {
+    console.log('Form Data:', formData)
+    console.log('Email:', formData.get('email'))
+    console.log('Password:', formData.get('password'));
     startTransition(async() => {
       const email = formData.get('email') as string
       const password = formData.get('password') as string
@@ -33,11 +37,11 @@ function AuthForm({ type }: Props) {
       let title;
       let description;
       if(isLoginForm) {
-        errorMessage = (await LoginAction({ email, password })).errorMessage;
+        errorMessage = (await loginAction( email, password )).errorMessage;
         title = 'Sign Up';
         description = 'You have been sign Up successfully.';
       } else {
-        errorMessage = (await SignUpAction({ email, password })).errorMessage;
+        errorMessage = (await signUpAction( email, password)).errorMessage;
         title = 'Signed Up';
         description = 'Check your email for conformation link.';
       }
@@ -106,7 +110,7 @@ function AuthForm({ type }: Props) {
             {isLoginForm ? 'Sign Up' : 'Login'}
           </Link>
         </p>
-      </CardFooter> 
+      </CardFooter>
     </form>
   )
 }
