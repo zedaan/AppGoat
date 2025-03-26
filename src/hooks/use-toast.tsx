@@ -6,9 +6,11 @@ import * as React from "react"
 import type {
   ToasterProps,
 } from "@/components/ui/sonner"
+import { toast as sonnerToast } from "sonner";
 
-const TOAST_LIMIT = 1
-const TOAST_REMOVE_DELAY = 1000000
+
+const TOAST_LIMIT = 5
+const TOAST_REMOVE_DELAY = 5000
 
 type ToasterToast = ToasterProps & {
   id: string
@@ -165,6 +167,28 @@ function toast({ ...props }: Toast) {
       },
     },
   })
+
+    // INTEGRATION WITH SONNER: Actually display the toast using sonner
+  const title = props.title?.toString() || "";
+  const description = props.description?.toString() || "";
+  
+  // Call the appropriate sonner method based on the variant
+  if (props.variant === "destructive") {
+    sonnerToast.error(title, { 
+      id,
+      description
+    });
+  } else if (props.variant === "success") {
+    sonnerToast.success(title, {
+      id,
+      description
+    });
+  } else {
+    sonnerToast(title, {
+      id,
+      description
+    });
+  }
 
   return {
     id: id,
