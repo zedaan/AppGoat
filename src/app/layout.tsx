@@ -34,10 +34,11 @@ export default function RootLayout({
 
                 <main className="flex flex-1 flex-col px-4 pt-10 xl:px-8">
                   {children}
+                  <Toaster />
                 </main>
               </div>
             </SidebarProvider>
-            <Toaster />
+            
           </NoteProvider>
         </ThemeProvider>
       </body>
