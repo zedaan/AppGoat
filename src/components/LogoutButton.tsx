@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { logOutAction } from "@/actions/users";
 
-function LogOutButton() {
+function LogoutButton() {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -43,4 +43,4 @@ function LogOutButton() {
   );
 }
 
-export default LogOutButton;
+export default LogoutButton;
