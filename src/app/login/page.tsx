@@ -10,7 +10,7 @@ function LoginPage() {
           <CardHeader className='mb-4'>
             <CardTitle className='text-center text-3xl font-semibold'>Login</CardTitle>
               <CardDescription className='text-center text-sm text-muted-foreground'>
-                Enter your credentials to access your account.
+                Please add your credentials to access your account.
               </CardDescription>
           </CardHeader>
           <AuthForm type="login" />
