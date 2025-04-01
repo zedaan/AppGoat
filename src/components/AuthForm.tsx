@@ -8,7 +8,7 @@ import { Label } from './ui/label'
 import { Input } from './ui/input'
 import { useTransition } from 'react'
 import { Button } from './ui/button'
-import { Loader2, Router } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { loginAction, signUpAction } from '@/actions/users'
 
@@ -18,7 +18,7 @@ type Props = {
 
 function AuthForm({ type }: Props) {
   const isLoginForm = type === 'login'
-  const isSignUpForm = type === 'signUp'
+  // const isSignUpForm = type === 'signUp'
 
   const router = useRouter();
   const { toast } = useToast();
