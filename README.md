@@ -36,5 +36,43 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-# My websitie
+# My websitie Link
 https://app-goat-p51g.vercel.app/
+
+# Collecting workspace information# Tech Stack in Goat Notes
+
+Based on the code and configuration files in your workspace, here's the comprehensive tech stack:
+
+## Frontend
+- **Next.js 15** - React framework with App Router
+- **React 19** - Latest React version
+- **TypeScript** - Type safety
+- **Tailwind CSS v4** - Utility-first CSS
+- **Sonner** - Toast notifications library
+- **next-themes** - Theme management (dark/light mode)
+
+## UI Components
+- **shadcn/ui** - Component collection built on Radix UI
+- **Radix UI** - Unstyled, accessible components
+- **Lucide React** - Icon library
+- **class-variance-authority** - For component variants
+- **tailwind-merge** - For conditional class merging
+
+## Backend & Data
+- **Supabase** - Backend-as-a-Service
+  - Authentication
+  - PostgreSQL database
+- **Prisma v6** - ORM for database access
+- **OpenAI** - AI integration for the "Ask AI" feature
+
+## Development Tools
+- **PNPM** - Package manager
+- **Biome** - Linter/formatter
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Turbopack** - Fast dev server (used with `next dev --turbopack`)
+
+## Deployment
+- **Vercel** - Hosting platform (mentioned in README)
+
+The application is a modern note-taking app with AI features, using a React/Next.js frontend with a Supabase backend, and has toast notifications powered by Sonner.
